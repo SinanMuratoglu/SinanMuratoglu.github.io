@@ -237,7 +237,18 @@
         <output id="coverOut">75%</output>
       </div>
     </fieldset>
-
+    <fieldset>
+      <legend class="h">Regression</legend>
+      <select id="regdeg" aria-label="Regression polynomial degree">
+        <option value="0">Off</option>
+        <option value="1">Linear (degree 1)</option>
+        <option value="2">Quadratic (degree 2)</option>
+        <option value="3">Cubic (degree 3)</option>
+        <option value="4">Degree 4</option>
+        <option value="5">Degree 5</option>
+      </select>
+      <p class="hint" id="regOut"></p>
+    </fieldset>
     <fieldset>
       <legend class="h">Families</legend>
       <ul class="legend" id="legend"></ul>
@@ -357,6 +368,7 @@
     hidden: new Set((params.get("hide") || "").split("|").filter(Boolean)),
     highlight: null,
     search: params.get("q") || "",
+    deg: Math.max(0, Math.min(5, parseInt(params.get("deg") || "0", 10) || 0)),
   };
   const parseCut = v => { if (!v) return [null, null]; const [a, b] = v.split(",").map(t => t === "" ? null : +t); return [Number.isFinite(a) ? a : null, Number.isFinite(b) ? b : null]; };
   state.cut = { x: parseCut(params.get("xc")), y: parseCut(params.get("yc")) };
@@ -381,7 +393,8 @@
   $("xsel").value = state.x; $("ysel").value = state.y;
   $("cover").value = state.cover; $("coverOut").textContent = state.cover + "%";
   $("search").value = state.search;
-
+  $("regdeg").value = state.deg;
+  $("regdeg").onchange = e => { state.deg = +e.target.value; render(false); };
   function syncButtons() {
     document.querySelectorAll("[data-scale]").forEach(b => {
       const on = (b.dataset.axis === "x" ? state.xlog : state.ylog) === (b.dataset.scale === "log");
@@ -573,7 +586,57 @@
     if (!(scale > 0)) return [-Infinity, Infinity];
     return [med - k * scale, med + k * scale];
   }
-
+// ------------------------------------------------------------------ regression
+  function polyfit(X, Y, d) {
+    const n = X.length;
+    if (n <= d) return null;
+    let m = 0; for (const v of X) m += v; m /= n;
+    let s = 0; for (const v of X) s += (v - m) ** 2; s = Math.sqrt(s / n);
+    if (!(s > 0)) return null;
+    const k = d + 1, A = Array.from({ length: k }, () => new Float64Array(k + 1));
+    for (let i = 0; i < n; i++) {
+      const u = (X[i] - m) / s, pw = [1];
+      for (let p = 1; p <= 2 * d; p++) pw.push(pw[p - 1] * u);
+      for (let r = 0; r < k; r++) {
+        for (let c = 0; c < k; c++) A[r][c] += pw[r + c];
+        A[r][k] += pw[r] * Y[i];
+      }
+    }
+    for (let c = 0; c < k; c++) {
+      let piv = c;
+      for (let r = c + 1; r < k; r++) if (Math.abs(A[r][c]) > Math.abs(A[piv][c])) piv = r;
+      [A[c], A[piv]] = [A[piv], A[c]];
+      if (Math.abs(A[c][c]) < 1e-12) return null;
+      for (let r = 0; r < k; r++) {
+        if (r === c) continue;
+        const f = A[r][c] / A[c][c];
+        for (let t = c; t <= k; t++) A[r][t] -= f * A[c][t];
+      }
+    }
+    const b = A.map((row, r) => row[k] / row[r]);
+    const binom = (p, q) => { let v = 1; for (let t = 1; t <= q; t++) v = v * (p - q + t) / t; return v; };
+    const coef = new Array(k).fill(0);
+    for (let j = 0; j < k; j++) for (let i = 0; i <= j; i++) coef[i] += b[j] / s ** j * binom(j, i) * (-m) ** (j - i);
+    const ev = x => { let u = (x - m) / s, acc = 0; for (let j = k - 1; j >= 0; j--) acc = acc * u + b[j]; return acc; };
+    let my = 0; for (const v of Y) my += v; my /= n;
+    let ssr = 0, sst = 0;
+    for (let i = 0; i < n; i++) { ssr += (Y[i] - ev(X[i])) ** 2; sst += (Y[i] - my) ** 2; }
+    return { coef, ev, r2: sst > 0 ? 1 - ssr / sst : NaN, n };
+  }
+  const SUP = { "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹" };
+  function equation(coef, xlog, ylog) {
+    const xv = xlog ? "log₁₀x" : "x", yv = ylog ? "log₁₀y" : "y";
+    const num = v => { const a = Math.abs(v); return (a !== 0 && (a >= 1e4 || a < 1e-3)) ? a.toExponential(3) : (+a.toPrecision(4)).toString(); };
+    let s = "";
+    for (let p = coef.length - 1; p >= 0; p--) {
+      const c = coef[p];
+      const pow = p > 1 ? String(p).split("").map(ch => SUP[ch]).join("") : "";
+      const base = xlog && p > 1 ? `(${xv})` : xv;
+      const term = num(c) + (p === 0 ? "" : (xlog ? "·" : "") + base + pow);
+      s += s === "" ? (c < 0 ? "−" : "") + term : (c < 0 ? " − " : " + ") + term;
+    }
+    return `${yv} = ${s}`;
+  }
   // ------------------------------------------------------------------ envelopes
   // Kernel density estimate on a grid in (possibly log-) transformed space, then a
   // single filled contour at the density level that encloses `cover`% of the family.
@@ -691,7 +754,34 @@
         });
       }
     }
-
+// regression over every visible point
+    let regAnn = null;
+    if (state.deg > 0) {
+      const vis = rows.filter(i => !state.hidden.has(C.group[i]));
+      const fit = polyfit(vis.map(i => tx[i]), vis.map(i => ty[i]), state.deg);
+      if (fit) {
+        let lo = Infinity, hi = -Infinity;
+        for (const i of vis) { if (tx[i] < lo) lo = tx[i]; if (tx[i] > hi) hi = tx[i]; }
+        const lx = [], ly = [];
+        for (let t = 0; t <= 240; t++) { const X = lo + (hi - lo) * t / 240; lx.push(U(X, state.xlog)); ly.push(U(fit.ev(X), state.ylog)); }
+        traces.push({
+          type: "scatter", mode: "lines", showlegend: false, hoverinfo: "skip",
+          x: lx, y: ly, line: { color: css("--text-primary"), width: 2.5 },
+        });
+        regAnn = {
+          xref: "paper", yref: "paper", x: 0.01, y: 0.99, xanchor: "left", yanchor: "top", showarrow: false, align: "left",
+          text: `${equation(fit.coef, state.xlog, state.ylog)}<br>R² = ${fit.r2.toFixed(4)}  (n = ${fit.n.toLocaleString()})`,
+          font: { size: 12, color: css("--text-primary") }, bgcolor: hexA(surface.startsWith("#") ? surface : "#ffffff", 0.85),
+          bordercolor: css("--border"), borderwidth: 1, borderpad: 6,
+        };
+        $("regOut").textContent = `x = ${AX[state.x].label}, y = ${AX[state.y].label}` +
+          (state.xlog || state.ylog ? ". Fit and R² are in log₁₀ space on log axes." : ".");
+      } else {
+        $("regOut").textContent = "Not enough distinct points on this plot for that degree.";
+      }
+    } else {
+      $("regOut").textContent = "";
+    }
     // search matches: ringed + labelled
     let nMatch = 0;
     if (state.search) {
@@ -735,6 +825,7 @@
       hoverlabel: { bgcolor: surface, bordercolor: border, font: { color: tp, size: 12 } },
       dragmode: "zoom",
       uirevision: resetZoom ? Math.random() : "keep",
+      annotations: regAnn ? [regAnn] : [],
     };
     if (resetZoom) {
       layout.xaxis.range = state.xlog ? [bounds[0], bounds[1]] : [bounds[0], bounds[1]];
@@ -758,6 +849,7 @@
     const h = new URLSearchParams({ x: state.x, y: state.y, xlog: +state.xlog, ylog: +state.ylog, blob: state.blob, cover: state.cover });
     if (state.hidden.size) h.set("hide", [...state.hidden].join("|"));
     if (state.search) h.set("q", state.search);
+    if (state.deg) h.set("deg", state.deg);
     for (const ax of ["x", "y"]) { const [a, b] = state.cut[ax]; if (a != null || b != null) h.set(ax + "c", `${a ?? ""},${b ?? ""}`); }
     history.replaceState(null, "", "#" + h.toString());
     render.rows = rows;
