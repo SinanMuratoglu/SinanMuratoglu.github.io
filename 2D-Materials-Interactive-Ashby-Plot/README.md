@@ -8,12 +8,11 @@ Interactive Ashby-style property map of two-dimensional materials from
 ## Features
 
 - 17 selectable axes, band gap, exfoliation energy, energy above hull,
-  areal mass density, layer thickness, magnetization, band edges, lattice constants...
-- 9 colour-coded families
-- Family envelopes: a kernel-density contour enclosing a chosen share (50–95%) of each
-  family
+  areal mass density, layer thickness, magnetization, band edges, lattice constants,
+  and many more!
+- 9 color-coded families based on chemical formulae
+- Family envelopes: a kernel-density contour enclosing a fraction of each family
 - Eport visible data as CSV or plot as PNG
-- The view is stored in the URL, link reproduces same plot
 
 ## Repository layout
 
