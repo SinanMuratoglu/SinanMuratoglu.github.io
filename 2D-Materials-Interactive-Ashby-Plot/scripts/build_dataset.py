@@ -65,13 +65,13 @@ def anion_group(el):
     return None
 
 
-ANION_PRIORITY = [  # first match wins
+ANION_PRIORITY = [
     ("halide", HALOGENS),
     ("oxide", {"O"}),
     ("chalcogenide", CHALCOGENS),
     ("pnictide", {"N", "P", "As"}),
     ("carbide/tetrelide", {"C", "Si", "B"}),
-    ("heavy pnictide", {"Sb", "Bi"}),   # Zintl-type, only if nothing above present
+    ("heavy pnictide", {"Sb", "Bi"}),   # Zintl-type
     ("tetrelide", {"Ge"}),
     ("hydride", {"H"}),
 ]
