@@ -774,8 +774,7 @@
           font: { size: 12, color: css("--text-primary") }, bgcolor: hexA(surface.startsWith("#") ? surface : "#ffffff", 0.85),
           bordercolor: css("--border"), borderwidth: 1, borderpad: 6,
         };
-        $("regOut").textContent = `x = ${AX[state.x].label}, y = ${AX[state.y].label}` +
-          (state.xlog || state.ylog ? ". Fit and R² are in log₁₀ space on log axes." : ".");
+        $("regOut").textContent = "";
       } else {
         $("regOut").textContent = "Not enough distinct points on this plot for that degree.";
       }
