@@ -16,6 +16,6 @@ I chose **56 wt% Ag** (44 wt% Cu), where the model predicted a color very close 
 
 Metal clay is fine metal powder held together by an organic binder, so it can be shaped like clay. I combined silver and copper clays in the 56/44 ratio and pressed them into a silicone mold. I then annealed the pieces to dry and set the clay, and finally sintered them. During sintering the binder burns off and the metal particles fuse into solid metal, giving the final alloy and its color.
 
-![Silver–copper alloy earrings](earrings.jpg)
+![Silver–copper alloy earrings](IMG_6982.jpg)
 
 [← Back to projects](../)
