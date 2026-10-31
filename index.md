@@ -13,3 +13,9 @@ Interactive Ashby-style property maps of 6,000+ 2D materials from 2DMatPedia. In
 Earrings made from sintered 56 wt% Ag / 44 wt% Cu metal clay, with the composition chosen using a CIELAB model of apparent alloy color to look like white gold at a fraction of the cost.
 
 [Check it out →](Silver-Copper-Alloy-Earrings/)
+
+## Plant Watering Reminder
+
+A Raspberry Pi Pico 2 device that checks a plant's soil moisture once a day and, when it's dry, uses an ultrasonic sensor to spot passersby and rocks a watering can to remind them to water it.
+
+[Check it out →](Plant-Watering-Reminder/)
