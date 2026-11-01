@@ -22,8 +22,8 @@ Keeps an eye on a plant's soil and, when it's dry, gets the attention of whoever
 
 <figure>
   <figcaption>Raw data from moisture sensor in different states</figcaption>
-  <img src="strip_plot.png" controls width="40%"></img>
-  <img src="strip_box_panels.png" controls width="40%"></img>
+  <img src="strip_plot.png" controls width="40%">
+  <img src="strip_box_panels.png" controls width="40%">
 </figure>
 
 ## Hardware
