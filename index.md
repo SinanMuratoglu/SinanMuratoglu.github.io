@@ -14,7 +14,7 @@ Earrings made from sintered Ag / Cu metal clay
 
 [Check it out →](Silver-Copper-Alloy-Earrings/)
 
-## Plant Watering Reminder
+## The Soil Sentinel™
 
 Monitors plant moisture and reminds passerby to water the plant if it's dry.
 
