@@ -6,7 +6,7 @@ title: Soil Sentinel ™
 
 Keeps an eye on a plant's soil and, when it's dry, gets the attention of whoever walks by. Built with a Raspberry Pi Pico 2 running CircuitPython.
 
-## Operation
+## Demo
 
 **Soil probing mode.** Measures soil moisture once a day.
 
