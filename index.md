@@ -4,18 +4,18 @@ title: Projects
 
 ## 2D Materials Interactive Ashby Plot
 
-Interactive Ashby-style property maps of 6,000+ 2D materials from 2DMatPedia. Includes selectable axes, family envelopes, and polynomial regression.
+Interactive Ashby-style property maps of 6,000+ 2D materials from 2DMatPedia.
 
 [Check it out →](2D-Materials-Interactive-Ashby-Plot/)
 
 ## Silver–Copper Alloy Earrings
 
-Earrings made from sintered 56 wt% Ag / 44 wt% Cu metal clay, with the composition chosen using a CIELAB model of apparent alloy color to look like white gold at a fraction of the cost.
+Earrings made from sintered Ag / Cu metal clay
 
 [Check it out →](Silver-Copper-Alloy-Earrings/)
 
 ## Plant Watering Reminder
 
-A Raspberry Pi Pico 2 device that checks a plant's soil moisture once a day and, when it's dry, uses an ultrasonic sensor to spot passersby and rocks a watering can to remind them to water it.
+Monitors plant moisture and reminds passerby to water the plant if it's dry.
 
 [Check it out →](Plant-Watering-Reminder/)
