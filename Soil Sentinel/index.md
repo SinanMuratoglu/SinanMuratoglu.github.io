@@ -10,12 +10,12 @@ Keeps an eye on a plant's soil and, when it's dry, gets the attention of whoever
 
 <figure>
 <figcaption>Soil is dry:</figcaption>
-<video src="IMG_7015.mp4" controls width="100%"></video>
+<video src="IMG_7015.mp4" controls width="40%"></video>
 </figure>
 
 <figure>
 <figcaption>After watering:</figcaption>
-<video src="IMG_7011.mp4" controls width="100%"></video>
+<video src="IMG_7011.mp4" controls width="40%"></video>
 </figure>
 
 ## Hardware
