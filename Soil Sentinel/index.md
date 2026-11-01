@@ -9,13 +9,13 @@ Keeps an eye on a plant's soil and, when it's dry, gets the attention of whoever
 ## Demo
 
 <figure>
-<video src="IMG_7011.mp4" controls width="100%"></video>
-<figcaption>Soil probing mode finds wet soil, waits 48 hours before checking again.</figcaption>
+<figcaption>Soil is dry:</figcaption>
+<video src="IMG_7015.mp4" controls width="100%"></video>
 </figure>
 
 <figure>
-<video src="IMG_7015.mp4" controls width="100%"></video>
-<figcaption>Soil probing mode finds dry soil, system enters alert state; actuates servo-driven rocker</figcaption>
+<figcaption>After watering:</figcaption>
+<video src="IMG_7011.mp4" controls width="100%"></video>
 </figure>
 
 ## Hardware
