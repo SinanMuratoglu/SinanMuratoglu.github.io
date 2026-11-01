@@ -8,9 +8,15 @@ Keeps an eye on a plant's soil and, when it's dry, gets the attention of whoever
 
 ## Demo
 
-**Soil probing mode.** Measures soil moisture once a day.
+<figure>
+  <video src="IMG_7011.mp4" controls width="100%"></video>
+  <figcaption>Soil probing mode finds wet soil, waits 48 hours before checking again.</figcaption>
+</figure>
 
-**Alert mode.** If soil is dry, system switches to alert mode and waits for the ultrasonic sensor to detect someone walking by; a servo then rocks the watering can back and forth as a reminder to water the plant.
+<figure>
+  <video src="IMG_7015.mp4" controls width="100%"></video>
+  <figcaption>Soil probing mode finds dry soil, system enters alert state; actuates servo-driven rocker</figcaption>
+</figure>
 
 ## Hardware
 
