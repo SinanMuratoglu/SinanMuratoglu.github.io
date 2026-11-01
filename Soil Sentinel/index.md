@@ -15,12 +15,8 @@ Soil is wet:
 Soil is dry:
 <figure>
   <video src="IMG_7015.mp4" controls width="100%"></video>
-  <figcaption>Soil probing mode finds dry soil, activates motion sensor; actuates servo-driven rocker</figcaption>
+  <figcaption>Soil probing mode finds dry soil, system enters alert state; actuates servo-driven rocker</figcaption>
 </figure>
-
-**Soil probing mode.** Measures soil moisture once a day.
-
-**Alert mode.** If soil is dry, system switches to alert mode and waits for the ultrasonic sensor to detect someone walking by; a servo then rocks the watering can back and forth as a reminder to water the plant.
 
 ## Hardware
 
