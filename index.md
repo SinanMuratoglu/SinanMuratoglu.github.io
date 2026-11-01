@@ -18,4 +18,4 @@ Earrings made from sintered Ag / Cu metal clay
 
 Monitors plant moisture and reminds passerby to water the plant if it's dry.
 
-[Check it out →](Soil-Sentinel/)
+[Check it out →](Soil%20Sentinel/)
