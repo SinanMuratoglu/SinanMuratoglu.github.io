@@ -1,6 +1,11 @@
 ---
-title: Projects
+title:
 ---
+## The Soil Sentinel ™
+
+Monitors plant moisture and reminds passerby to water the plant if it's dry.
+
+[Check it out →](Soil%20Sentinel/)
 
 ## 2D Materials Interactive Ashby Plot
 
@@ -14,8 +19,6 @@ Earrings made from sintered Ag / Cu metal clay
 
 [Check it out →](Silver-Copper-Alloy-Earrings/)
 
-## The Soil Sentinel ™
+## Modular Guitar Pedal
 
-Monitors plant moisture and reminds passerby to water the plant if it's dry.
-
-[Check it out →](Soil%20Sentinel/)
+Coming soon
