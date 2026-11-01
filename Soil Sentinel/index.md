@@ -18,6 +18,14 @@ Keeps an eye on a plant's soil and, when it's dry, gets the attention of whoever
 <video src="IMG_7011.mp4" controls width="40%"></video>
 </figure>
 
+## Sensor calibration
+
+<figure>
+  <figcaption>Raw data from moisture sensor in different states</figcaption>
+  <img src="strip_plot.png" controls width="40%"></img>
+  <img src="strip_box_panels.png" controls width="40%"></img>
+</figure>
+
 ## Hardware
 
 - Raspberry Pi Pico 2 running CircuitPython
