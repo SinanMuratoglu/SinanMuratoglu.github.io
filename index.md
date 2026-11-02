@@ -3,13 +3,13 @@ title: Projects
 ---
 ## The Soil Sentinel ™
 
-Monitors plant moisture and reminds passerby to water the plant if it's dry.
+Monitors plant moisture and prompts passerby to water the plant if it's dry
 
 [Check it out →](Soil%20Sentinel/)
 
 ## 2D Materials Interactive Ashby Plot
 
-Interactive Ashby-style property maps of 6,000+ 2D materials from 2DMatPedia.
+Interactive Ashby-style property maps of 6,000+ 2D materials from 2DMatPedia
 
 [Check it out →](2D-Materials-Interactive-Ashby-Plot/)
 
