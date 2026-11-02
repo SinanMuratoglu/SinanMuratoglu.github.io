@@ -2,7 +2,7 @@
 title: Silver–Copper Alloy Earrings
 ---
 
-![Silver–copper alloy earrings](IMG_6982.jpg)
+<img src="IMG_6982.jpg" width="50%">
 
 # Silver–Copper Alloy Earrings
 
@@ -11,4 +11,5 @@ Used color data fitted to <a href="https://en.wikipedia.org/wiki/CIELAB_color_sp
 ## Fab
 
 Metal clay is fine metal powder held together by cellulose. I mixed silver and copper clays, pressed them into a silicone mold, annealed the pieces to dry and set the clay, and finally sintered them with a torch and polished them with a brass brush. 
+
 [← Back to projects](../)
