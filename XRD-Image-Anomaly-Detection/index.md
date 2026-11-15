@@ -25,14 +25,14 @@ On the dataset's held-out test set:
 
 | Problem | ROC-AUC | F1 |
 |---|---|---|
-| Strong background | 0.983 | 0.93 |
-| Ice ring | 0.972 | 0.78 |
-| Artifact | 0.931 | 0.77 |
-| Background ring | 0.924 | 0.89 |
-| Diffuse scattering | 0.918 | 0.44 |
-| Non-uniform detector | 0.895 | 0.77 |
-| Loop scattering | 0.862 | 0.74 |
-| **Average** | **0.927** | **0.76** |
+| Strong background | 0.983 | 0.92 |
+| Ice ring | 0.982 | 0.87 |
+| Artifact | 0.948 | 0.77 |
+| Background ring | 0.918 | 0.88 |
+| Diffuse scattering | 0.906 | 0.53 |
+| Non-uniform detector | 0.889 | 0.76 |
+| Loop scattering | 0.878 | 0.77 |
+| **Average** | **0.929** | **0.78** |
 
 ROC-AUC (0-0.1) measures how well the model ranks images with a problem above images without it. F1 measures how accurate the yes/no choices are.
 

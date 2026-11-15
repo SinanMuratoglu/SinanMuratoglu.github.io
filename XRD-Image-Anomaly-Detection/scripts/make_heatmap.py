@@ -8,7 +8,7 @@ for c in share.columns:
     for f in share[c].nlargest(3).index:
         if f not in feats: feats.append(f)
 nice = {"ring_frac_sectors_lit":"ring goes all the way around","ring_radius_frac":"ring radius",
- "ring_max_prom":"ring sharpness","ring_prom_2":"2nd ring sharpness","bg_level":"background level",
+ "ring_max_prom":"ring sharpness","ring_count":"number of rings","ring_prom_2":"2nd ring sharpness","bg_level":"background level",
  "bg_slope":"background slope","bg_inner":"inner background","diffuse_humps":"broad humps",
  "diffuse_energy":"diffuse texture","sector_range":"one side brighter","sector_h1":"left/right imbalance",
  "sector_h2":"quadrupole imbalance","sector_spread_by_r":"azimuthal spread","spot_frac":"Bragg spot density",

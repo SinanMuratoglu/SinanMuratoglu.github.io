@@ -16,7 +16,7 @@ import numpy as np
 from scipy import ndimage, signal
 from skimage.morphology import disk, white_tophat
 
-from .preprocess import detector_mask, find_beam_center, radial_profile
+from .preprocess import detector_mask, radial_profile, refine_center_and_mask
 
 N_BINS = 256
 N_SECTORS = 16
@@ -41,7 +41,10 @@ def extract_features(img: np.ndarray, refine_center: bool = True) -> tuple[dict,
 
 def _extract(img, refine_center):
     mask = detector_mask(img, dead_value=6.0)
-    center = find_beam_center(img, mask) if refine_center else (img.shape[0] / 2, img.shape[1] / 2)
+    if refine_center:
+        center, mask = refine_center_and_mask(img, mask)
+    else:
+        center = (img.shape[0] / 2, img.shape[1] / 2)
     # median over azimuthal sectors: robust to Bragg spots, keeps true rings
     r, sect = radial_profile(img, mask, center, N_BINS, N_SECTORS)
     with np.errstate(all="ignore"):

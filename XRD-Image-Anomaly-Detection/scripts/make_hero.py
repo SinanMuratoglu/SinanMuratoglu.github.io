@@ -17,7 +17,7 @@ prom=np.array([p[k]/d['baseline'][k] for k in pk]); top=pk[np.argsort(prom)[::-1
 for k in top:
     # partial arc, offset outward, so the ring itself stays visible
     a.add_patch(Arc((cx,cy),2*(r[k]+9),2*(r[k]+9),theta1=200,theta2=340,ec=HL,lw=2))
-a.set_title('Raw RefleX image (stored dark = strong)',color=INK,fontsize=12,loc='left')
+a.set_title('Raw RefleX image',color=INK,fontsize=12,loc='left')
 b.set_facecolor(BG); b.semilogy(r,p,color=ACC,lw=2,label='azimuthal average')
 b.semilogy(r,d['baseline'],color=MUTED,lw=1.2,ls='--',label='smooth background')
 b.plot(r[top],p[top]*1.12,'v',color=HL,ms=9,label='detected ice rings')
