@@ -34,18 +34,18 @@ On the dataset's held-out test set:
 | Loop scattering | 0.878 | 0.77 |
 | **Average** | **0.929** | **0.78** |
 
-ROC-AUC (0-0.1) measures how well the model ranks images with a problem above images without it. F1 measures how accurate the yes/no choices are.
+ROC-AUC measures how well (0-1) the model ranks images with a problem above images without it. F1 measures how accurate the yes/no choices are.
 
 ![Heatmap of which features the model relies on for each problem](figs/feature_heatmap.png)
 
 To find what the model relies on, I shuffled one feature at a time on the validation set and measured how much the score dropped ([permutation importance](https://scikit-learn.org/stable/modules/permutation_importance.html)). For four of the problems, the reasoning lines up with the physics:
 
-- **Ice rings** are flagged mainly by whether the sharpest ring goes all the way around and where it sits. 
+- **Ice rings** are flagged mainly by the number of rings, whether the sharpest one goes all the way around, and how sharp it is.
 - **Background rings** are flagged by broad humps in the ring profile.
 - **Strong background** comes almost entirely from the background level.
 - **Artifacts** are flagged by the straight-streak detector.
 
-The other three are less convincing. Loop scattering, non-uniform detector response and diffuse scattering lean on the fraction of saturated pixels. That's a correlation in the dataset, not the physical signature of those problems, and it's where the scores are lowest. Diffuse scattering also has only 44 examples in the test set, so its yes/no calls are unreliable even though the ranking is decent. Features that describe the shape of those signals directly are the obvious next step.
+The other three are less convincing. Loop scattering leans on saturated pixels, though one-sided brightness helps too. Non-uniform detector response leans on dead area and saturated pixels, and diffuse scattering on Bragg spot density and saturated pixels. These are correlations rather than physical signatures of those problems. Diffuse scattering also has only 44 examples in the test set, so its yes/no calls are unreliable despite the decent ranking. Future versions will use features that describe the shape of those signals directly.
 
 ## Code
 
