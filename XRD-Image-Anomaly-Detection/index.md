@@ -4,7 +4,7 @@ title: Flagging Bad X-ray Diffraction Images
 
 ![An ice-contaminated diffraction image and its ring profile](figs/hero_ice_ring.png)
 
-![Average precision of the full pipeline vs. two baselines for each problem](figs/baseline_comparison.png)
+<img src="figs/baseline_comparison.png" alt="" style="width: 600px; height: auto;">
 
 # Flagging Bad X-ray Diffraction Images
 
