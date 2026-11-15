@@ -47,12 +47,6 @@ To find what the model relies on, I shuffled one feature at a time on the valida
 
 The other three are less convincing. Loop scattering, non-uniform detector response and diffuse scattering lean on the fraction of saturated pixels. That's a correlation in the dataset, not the physical signature of those problems, and it's where the scores are lowest. Diffuse scattering also has only 44 examples in the test set, so its yes/no calls are unreliable even though the ranking is decent. Features that describe the shape of those signals directly are the obvious next step.
 
-## Bugs & Fixes
-
-- **The images were stored inverted.** I wrote the pipeline initially thinking that spots from scattering would be bright, but the real data is the opposite; but after running the program on a smaller set saw something was definitely wrong; instead of changing the entire pipeline, I just invert each image before it is analyzed.
-- **Image IDs with dots were being cut off.** Some IDs contain a period, and the standard "strip the file extension" call chopped them at that period. That dropped about 900 labeled images from training until I counted matches and added them back
-- **The beamstop edge looked like a ring.** The sharp step where the beamstop shadow ends gave the strongest "ring" for some images, so the ring search skips the inner 32 pixels.
-
 ## Code
 
 Written in Python with NumPy, SciPy, scikit-image, and scikit-learn. The code is in this folder: [`xrdpipe/`](xrdpipe/) has the pipeline; see [`README.md`](README.md) for instructions.
