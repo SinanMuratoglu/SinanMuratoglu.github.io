@@ -1,4 +1,4 @@
-"""Compare the full pipeline against random guessing and a brightness-stats-only baseline.
+"""Compare the full pipeline against random guessing and a brightness-stats-only baseline
 
 Usage: PYTHONPATH=. python3 scripts/compare_baselines.py DATA_ROOT
 (DATA_ROOT holds data/features.csv, data/labels.csv and labels_{train,val,test}.csv)
