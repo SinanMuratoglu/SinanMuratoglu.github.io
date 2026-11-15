@@ -1,8 +1,8 @@
-"""Generate fake RefleX-style images + label/split CSVs for smoke-testing.
+"""Generate fake RefleX-style images + label/split CSVs for smoke-testing
 
 Each image gets Bragg spots, a radial background, and randomly chosen
 anomalies (ice rings, background ring, strong background, diffuse humps,
-non-uniform detector gradient, artifact streak, loop scatter blob).
+non-uniform detector gradient, artifact streak, loop scatter blob)
 """
 import sys
 from pathlib import Path
@@ -37,7 +37,7 @@ def make(rng, n=512):
     img[r < 12] = 0  # beamstop
     img[:, n // 2 - 3 : n // 2 + 3] = 0  # module gap
     img = np.clip(img / img.max() * 255 * 1.5, 0, 255).astype(np.uint8)
-    return 255 - img, lab  # RefleX convention: dark = strong
+    return 255 - img, lab
 
 
 def main(out, count=120):
