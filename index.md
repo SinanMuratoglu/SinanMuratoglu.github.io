@@ -1,6 +1,10 @@
 ---
 title: Projects
 ---
+## X-Ray Diffraction Image Analysis Pipeline - 
+
+Machine learning model that flags XRD images for various artifacts
+
 ## The Soil Sentinel ™
 
 Monitors plant moisture and prompts passerby to water the plant if it's dry
