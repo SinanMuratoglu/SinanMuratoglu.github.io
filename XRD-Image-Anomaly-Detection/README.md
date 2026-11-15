@@ -7,18 +7,18 @@ loop scattering, non-uniform detector response, and artifacts.
 
 gradient-boosted classifier runs on interpretable features:
 
-1. **Detector mask**: drops module gaps and the beamstop shadow.
+1. **Detector mask**: drops module gaps and beamstop shadow.
 2. **Beam center refinement**: PNGs have no geometry header so center is
-   found by maximizing azimuthal symmetry across 8 sectors
+   found by maximizing azimuthal symmetry about 8 sectors
 3. **Azimuthal integration**: 256 radial bins × 16 azimuthal sectors. 1D profile
    is median across sectors
-4. **Features**: sharp rings (with how many sectors each ring lights up),
+4. **Features**: sharp rings (with how many sectors the strongest ring lights up),
    background level/slope, broad diffuse humps, sector asymmetry (Fourier
    harmonics), Bragg spot density (white top-hat), saturation/dead-area/streak
-   scores. About 30 features per image.
+   scores. 29 features per image
 5. **Model**: one HistGradientBoosting classifier per class, with per-class thresholds
    tuned on the validation split. The report covers ROC-AUC, average precision and F1
-   on the held-out test split, plus permutation feature importance.
+   on the held-out test split, plus permutation feature importance
 
 **Project page:** https://sinanmuratoglu.github.io/XRD-Image-Anomaly-Detection/
 
