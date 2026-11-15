@@ -1,7 +1,7 @@
 ---
 title: Projects
 ---
-## X-Ray Diffraction Image Analysis Pipeline - 
+## X-Ray Diffraction Image Analysis Pipeline
 
 Machine learning model that flags XRD images for various anomalies
 
