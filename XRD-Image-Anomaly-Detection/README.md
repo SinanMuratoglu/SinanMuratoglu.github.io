@@ -1,9 +1,9 @@
 # xrdpipe — anomaly detection in X-ray diffraction images
 
-A Python pipeline that takes raw diffraction images from the RefleX dataset
+Raw diffraction images from the RefleX dataset
 (Czyzewski et al., Zenodo 10.5281/zenodo.2605120) and flags seven kinds of
-image problems: ice rings, background rings, strong background, diffuse
-scattering, loop scattering, non-uniform detector response, and artifacts.
+anomalies: ice rings, background rings, strong background, diffuse scattering, 
+loop scattering, non-uniform detector response, and artifacts.
 
 gradient-boosted classifier runs on interpretable features:
 
