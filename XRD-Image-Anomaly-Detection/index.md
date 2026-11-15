@@ -8,7 +8,7 @@ title: Flagging Bad X-ray Diffraction Images
 
 # Flagging Bad X-ray Diffraction Images
 
-Pipeline that flags raw X-ray diffraction images for seven kinds of problems: ice rings, background rings, strong background, diffuse scattering, loop scattering, non-uniform detector response, and artifacts. 
+Pipeline that flags raw X-ray diffraction images for seven kinds of problems: [ice rings](https://www.biorxiv.org/content/10.1101/2021.10.28.466246v1.full), [background rings](https://pmc.ncbi.nlm.nih.gov/articles/PMC8341115/table/T1), [strong background](https://www.mitegen.com/learn/technotes/diffuse-background/), [diffuse scattering](https://journals.iucr.org/m/issues/2014/06/00/zx5002/), [loop scattering](https://pmc.ncbi.nlm.nih.gov/articles/PMC8341115/table/T1), [non-uniform detector response](https://pmc.ncbi.nlm.nih.gov/articles/PMC8341115/table/T1), and [artifacts](https://pmc.ncbi.nlm.nih.gov/articles/PMC8341115/table/T1).
 
 ## Workflow
 Instead of training a black-box neural network on the pixels, it reduces each image the way a person might read it, so the model can show the reason for flagging an image.
