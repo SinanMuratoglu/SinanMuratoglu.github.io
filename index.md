@@ -3,7 +3,8 @@ title: Projects
 ---
 ## X-Ray Diffraction Image Analysis Pipeline - 
 
-Machine learning model that flags XRD images for various artifacts
+Machine learning model that flags XRD images for various anomalies
+[Check it out →](XRD-Image-Anomaly-Detection)
 
 ## The Soil Sentinel ™
 
