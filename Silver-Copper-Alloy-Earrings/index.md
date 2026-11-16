@@ -10,6 +10,6 @@ Used color data fitted to <a href="https://en.wikipedia.org/wiki/CIELAB_color_sp
 
 ## Fab
 
-Metal clay is fine metal powder held together by cellulose. I mixed silver and copper clays, pressed them into a silicone mold, annealed the pieces to dry and set the clay, and finally sintered them with a torch and polished them with a brass brush. 
+Metal clay is fine metal powder held together by cellulose. I mixed silver and copper clays, pressed them into a silicone mold, annealed the pieces to dry and set the clay, and finally sintered in a kiln before polishing them with a brass brush. 
 
 [← Back to projects](../)
